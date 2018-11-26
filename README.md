@@ -26,7 +26,9 @@ npm install
 ```
 
 ## Run It
-#### Run in *development* mode:
+
+### Run in *development* mode
+
 Runs the application is development mode. Should not be used in production
 
 ```shell
@@ -39,7 +41,7 @@ or debug it
 npm run dev:debug
 ```
 
-#### Run in *production* mode:
+### Run in *production* mode
 
 Compiles the application and starts it in production production mode.
 
@@ -63,41 +65,43 @@ npm run test:debug
 ```
 
 ## Try It
+
 * Open you're browser to [http://localhost:3000](http://localhost:3000)
-* Invoke the `/examples` endpoint 
+* Invoke the `/examples` endpoint
+
   ```shell
   curl http://localhost:3000/api/v1/scheduling/examples
   ```
 
-
 ## Debug It
 
-#### Debug the server:
+### Debug the server
 
-```
+```shell
 npm run dev:debug
 ```
 
 #### Debug Tests
 
-```
+```shell
 npm run test:debug
 ```
 
 #### Debug with VSCode
 
 Add these [contents](https://github.com/cdimascio/generator-express-no-stress/blob/next/assets/.vscode/launch.json) to your `.vscode/launch.json` file
+
 ## Lint It
 
 View airbnb linter output
 
-```
+```shell
 npm run lint
 ```
 
 Fix all airbnb linter errors
 
-```
+```shell
 npm run lint
 ```
 
@@ -108,7 +112,3 @@ Deploy to CloudFoundry
 ```shell
 cf push portal-scheduling
 ```
-
-
-   
-# 18E4-2-portal-scheduling
