@@ -1,20 +1,22 @@
-import l from '../../config/logger';
-import db from '../../repository/examples.repo';
-
 class ExamplesService {
+  constructor(repo, logger) {
+    this._repo = repo;
+    this._logger = logger;
+  }
+
   all() {
-    l.info(`${this.constructor.name}.all()`);
-    return db.all();
+    this._logger.info(`${this.constructor.name}.all()`);
+    return this._repo.all();
   }
 
   byId(id) {
-    l.info(`${this.constructor.name}.byId(${id})`);
-    return db.byId(id);
+    this._logger.info(`${this.constructor.name}.byId(${id})`);
+    return this._repo.byId(id);
   }
 
   create(name) {
-    return db.insert(name);
+    return this._repo.insert(name);
   }
 }
 
-export default new ExamplesService();
+export default ExamplesService;

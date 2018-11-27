@@ -1,8 +1,8 @@
 import * as express from 'express';
-import controller from './examples.controller';
 
-export default express
-  .Router()
-  .post('/', controller.create)
-  .get('/', controller.all)
-  .get('/:id', controller.byId);
+export default controller =>
+  express
+    .Router()
+    .post('/', (req, res) => controller.create(req, res))
+    .get('/', (req, res) => controller.all(req, res))
+    .get('/:id', (req, res) => controller.byId(req, res));

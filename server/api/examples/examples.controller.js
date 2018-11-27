@@ -1,13 +1,15 @@
-import ExamplesService from './examples.service';
+class ExamplesController {
+  constructor(service) {
+    this._service = service;
+  }
 
-export class Controller {
   all(req, res) {
-    ExamplesService.all()
+    this._service.all()
       .then(r => res.json(r));
   }
 
   byId(req, res) {
-    ExamplesService
+    this._service
       .byId(req.params.id)
       .then(r => {
         if (r) res.json(r);
@@ -16,7 +18,7 @@ export class Controller {
   }
 
   create(req, res) {
-    ExamplesService
+    this._service
       .create(req.body.name)
       .then(r => res
         .status(201)
@@ -24,4 +26,5 @@ export class Controller {
         .json(r));
   }
 }
-export default new Controller();
+
+export default ExamplesController;

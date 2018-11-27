@@ -1,31 +1,34 @@
-class ExamplesDatabase {
-  constructor() {
-    this._data = [];
-    this._counter = 0;
-
-    this.insert('example 0');
-    this.insert('example 1');
+class ExamplesRepository {
+  constructor(model) {
+    this._model = model;
   }
 
   all() {
-    return Promise.resolve(this._data);
+    return this._model.find();
   }
 
   byId(id) {
-    return Promise.resolve(this._data[id]);
+    return this._model.findOne({ id });
   }
 
   insert(name) {
-    const record = {
-      id: this._counter,
+    const ExampleModel = this._model;
+    const record = new ExampleModel({
       name,
-    };
+    });
 
-    this._counter += 1;
-    this._data.push(record);
+    return record.save();
+  }
 
-    return Promise.resolve(record);
+  update(id, name) {
+    const ExampleModel = this._model;
+    const record = new ExampleModel({
+      _id: id,
+      name,
+    });
+
+    return record.save();
   }
 }
 
-export default new ExamplesDatabase();
+export default ExamplesRepository;

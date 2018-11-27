@@ -1,5 +1,7 @@
-import examplesRouter from '../api/examples/router';
+import routers from './routers';
 
 export default function routes(app) {
-  app.use('/api/v1/scheduling/examples', examplesRouter);
+  routers.forEach(generator => {
+    generator.generate(app);
+  });
 }
