@@ -1,23 +1,23 @@
 import models from '../models';
 import logger from '../config/logger';
 
-import examplesRouter from '../api/examples/router';
-import ExamplesController from '../api/examples/examples.controller';
-import ExamplesService from '../api/examples/examples.service';
-import ExamplesRepository from '../repository/examples.repo';
+import scheduleItensRouter from '../api/schedule-itens/router';
+import ScheduleItensController from '../api/schedule-itens/schedule-itens.controller';
+import ScheduleItensService from '../api/schedule-itens/schedule-itens.service';
+import ScheduleItensRepository from '../repository/schedule-itens.repo';
 
-const exampleGenerator = {
+const scheduleItemGenerator = {
   generate: app => {
-    const repo = new ExamplesRepository(models.Example);
-    const service = new ExamplesService(repo, logger);
-    const controller = new ExamplesController(service);
+    const repo = new ScheduleItensRepository(models.ScheduleItem);
+    const service = new ScheduleItensService(repo, logger);
+    const controller = new ScheduleItensController(service);
 
-    app.use('/api/v1/scheduling/examples', examplesRouter(controller));
+    app.use('/api/v1/scheduling/schedule-itens', scheduleItensRouter(controller));
   },
 };
 
 const routers = [
-  exampleGenerator,
+  scheduleItemGenerator,
 ];
 
 export default routers;

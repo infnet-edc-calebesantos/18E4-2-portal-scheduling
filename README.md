@@ -67,10 +67,10 @@ npm run test:debug
 ## Try It
 
 * Open you're browser to [http://localhost:3000](http://localhost:3000)
-* Invoke the `/examples` endpoint
+* Invoke the `/schedule-itens` endpoint
 
   ```shell
-  curl http://localhost:3000/api/v1/scheduling/examples
+  curl http://localhost:3000/api/v1/scheduling/schedule-itens
   ```
 
 ## Debug It

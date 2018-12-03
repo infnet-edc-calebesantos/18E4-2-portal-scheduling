@@ -1,4 +1,4 @@
-class ExamplesRepository {
+class ScheduleItensRepository {
   constructor(model) {
     this._model = model;
   }
@@ -12,8 +12,8 @@ class ExamplesRepository {
   }
 
   insert(name) {
-    const ExampleModel = this._model;
-    const record = new ExampleModel({
+    const ScheduleItensModel = this._model;
+    const record = new ScheduleItensModel({
       name,
     });
 
@@ -21,8 +21,8 @@ class ExamplesRepository {
   }
 
   update(id, name) {
-    const ExampleModel = this._model;
-    const record = new ExampleModel({
+    const ScheduleItensModel = this._model;
+    const record = new ScheduleItensModel({
       _id: id,
       name,
     });
@@ -31,4 +31,4 @@ class ExamplesRepository {
   }
 }
 
-export default ExamplesRepository;
+export default ScheduleItensRepository;

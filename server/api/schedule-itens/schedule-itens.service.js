@@ -1,4 +1,4 @@
-class ExamplesService {
+class ScheduleItensService {
   constructor(repo, logger) {
     this._repo = repo;
     this._logger = logger;
@@ -19,4 +19,4 @@ class ExamplesService {
   }
 }
 
-export default ExamplesService;
+export default ScheduleItensService;

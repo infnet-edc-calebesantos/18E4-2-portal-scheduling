@@ -4,11 +4,11 @@ import Server from '../server';
 
 const expect = chai.expect;
 
-describe('Examples', () => {
-  it('should get all examples', () =>
+describe('ScheduleItens', () => {
+  it('should get all schedule itens', () =>
     Server.then(s =>
       request(s)
-        .get('/api/v1/scheduling/examples')
+        .get('/api/v1/scheduling/schedule-itens')
         .expect('Content-Type', /json/)
         .then(r => {
           expect(r.body)
@@ -16,10 +16,10 @@ describe('Examples', () => {
             .of.length(2);
         })));
 
-  it('should add a new example', () =>
+  it('should add a new schedule item', () =>
     Server.then(s =>
       request(s)
-        .post('/api/v1/scheduling/examples')
+        .post('/api/v1/scheduling/schedule-itens')
         .send({ name: 'test' })
         .expect('Content-Type', /json/)
         .then(r => {
@@ -29,10 +29,10 @@ describe('Examples', () => {
             .equal('test');
         })));
 
-  it('should get an example by id', () =>
+  it('should get an schedule item by id', () =>
     Server.then(s =>
       request(s)
-        .get('/api/v1/scheduling/examples/2')
+        .get('/api/v1/scheduling/schedule-itens/2')
         .expect('Content-Type', /json/)
         .then(r => {
           expect(r.body)

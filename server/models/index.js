@@ -1,8 +1,8 @@
 import mongoose from 'mongoose';
-import ExampleSchema from './examples.schema';
+import ScheduleItemSchema from './schedule-itens.schema';
 
 const metaSchemas = [
-  ExampleSchema,
+  ScheduleItemSchema,
 ];
 
 const models = {};

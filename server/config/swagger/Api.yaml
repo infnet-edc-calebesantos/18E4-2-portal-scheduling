@@ -5,8 +5,8 @@ info:
   description: Educational project
 basePath: /api/v1/scheduling
 tags:
-  - name: Examples
-    description: Simple example endpoints
+  - name: ScheduleItens
+    description: Simple schedule item endpoints
   - name: Specification
     description: The swagger API specification
 
@@ -17,55 +17,55 @@ produces:
 
 
 definitions:
-  ExampleBody:
+  ScheduleItemBody:
     type: object
-    title: example
+    title: schedule item
     required:
       - name
     properties:
       name:
         type: string
-        example: no_stress
+        schedule item: no_stress
 
 paths:
-  /examples:
+  /schedule-itens:
     get:
       tags:
-        - Examples
-      description: Fetch all examples
+        - ScheduleItens
+      description: Fetch all schedule itens
       responses:
         200:
-          description: Returns all examples
+          description: Returns all schedule itens
     post:
       tags:
-        - Examples
-      description: Create a new example
+        - ScheduleItens
+      description: Create a new schedule item
       parameters:
-        - name: example
+        - name: schedule item
           in: body
-          description: an example
+          description: an schedule item
           required: true
           schema: 
-            $ref: "#/definitions/ExampleBody"
+            $ref: "#/definitions/ScheduleItemBody"
       responses:
         200:
-          description: Returns all examples
+          description: Returns all schedule itens
 
-  /examples/{id}:
+  /schedule-itens/{id}:
     get:
       tags:
-        - Examples
+        - ScheduleItens
       parameters:
         - name: id
           in: path
           required: true
-          description: The id of the example to retrieve
+          description: The id of the schedule item to retrieve
           type: integer
       responses:
         200:
-          description: Return the example with the specified id
+          description: Return the schedule item with the specified id
         404:
-          description: Example not found
+          description: Schedule item not found
 
   /spec:
     get:
