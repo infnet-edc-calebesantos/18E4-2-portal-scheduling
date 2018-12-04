@@ -21,11 +21,18 @@ definitions:
     type: object
     title: schedule item
     required:
-      - name
+      - title
+      - date
+      - type
     properties:
-      name:
+      title:
         type: string
-        schedule item: no_stress
+      date:
+        type: string
+      subject:
+        type: string
+      type:
+        type: string
 
 paths:
   /schedule-itens:
@@ -60,10 +67,25 @@ paths:
           in: path
           required: true
           description: The id of the schedule item to retrieve
-          type: integer
+          type: string
       responses:
         200:
           description: Return the schedule item with the specified id
+        404:
+          description: Schedule item not found
+    delete:
+      tags:
+        - ScheduleItens
+      description: Delete a existent schedule item
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The id of the schedule item to delete
+          type: string
+      responses:
+        200:
+          description: Return the schedule item that was deleted
         404:
           description: Schedule item not found
 

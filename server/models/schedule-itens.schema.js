@@ -1,7 +1,10 @@
 const ScheduleItemSchema = {
   name: 'ScheduleItem',
   schema: {
-    name: String,
+    title: String,
+    date: String,
+    subject: String,
+    type: String,
   },
 };
 

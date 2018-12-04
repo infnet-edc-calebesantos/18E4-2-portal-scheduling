@@ -4,13 +4,14 @@ import * as bodyParser from 'body-parser';
 import * as http from 'http';
 import * as os from 'os';
 import cookieParser from 'cookie-parser';
-import swaggerify from './swagger';
-import l from './logger';
 
 const app = new Express();
 
 export default class ExpressServer {
-  constructor() {
+  constructor(swaggerify, logger) {
+    this._swaggerify = swaggerify;
+    this._logger = logger;
+
     const root = path.normalize(`${__dirname}/../..`);
     app.set('appPath', `${root}client`);
     app.use(bodyParser.json());
@@ -20,12 +21,12 @@ export default class ExpressServer {
   }
 
   router(routes) {
-    swaggerify(app, routes);
+    this._swaggerify(app, routes);
     return this;
   }
 
   listen(port = process.env.PORT) {
-    const welcome = p => () => l.info(`up and running in ${process.env.NODE_ENV || 'development'} @: ${os.hostname()} on port: ${p}}`);
+    const welcome = p => () => this._logger.info(`up and running in ${process.env.NODE_ENV || 'development'} @: ${os.hostname()} on port: ${p}}`);
     http.createServer(app).listen(port, welcome(port));
     return app;
   }

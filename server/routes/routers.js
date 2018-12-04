@@ -6,18 +6,16 @@ import ScheduleItensController from '../api/schedule-itens/schedule-itens.contro
 import ScheduleItensService from '../api/schedule-itens/schedule-itens.service';
 import ScheduleItensRepository from '../repository/schedule-itens.repo';
 
-const scheduleItemGenerator = {
-  generate: app => {
-    const repo = new ScheduleItensRepository(models.ScheduleItem);
-    const service = new ScheduleItensService(repo, logger);
-    const controller = new ScheduleItensController(service);
+const generateScheduleItemRoute = app => {
+  const repo = new ScheduleItensRepository(models.ScheduleItem);
+  const service = new ScheduleItensService(repo, logger);
+  const controller = new ScheduleItensController(service);
 
-    app.use('/api/v1/scheduling/schedule-itens', scheduleItensRouter(controller));
-  },
+  scheduleItensRouter(app, controller);
 };
 
 const routers = [
-  scheduleItemGenerator,
+  generateScheduleItemRoute,
 ];
 
 export default routers;

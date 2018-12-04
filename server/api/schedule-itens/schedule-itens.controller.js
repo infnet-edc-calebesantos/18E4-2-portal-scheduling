@@ -19,11 +19,20 @@ class ScheduleItensController {
 
   create(req, res) {
     this._service
-      .create(req.body.name)
+      .create(req.body)
       .then(r => res
         .status(201)
         .location(`/api/v1/schedule-itens/${r.id}`)
         .json(r));
+  }
+
+  delete(req, res) {
+    this._service
+      .delete(req.params.id)
+      .then(r => {
+        if (r) res.json(r);
+        else res.status(404).end();
+      });
   }
 }
 

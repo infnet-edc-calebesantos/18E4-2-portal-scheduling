@@ -8,13 +8,16 @@ class ScheduleItensRepository {
   }
 
   byId(id) {
-    return this._model.findOne({ id });
+    return this._model.findOne({ _id: id });
   }
 
-  insert(name) {
+  insert(item) {
     const ScheduleItensModel = this._model;
     const record = new ScheduleItensModel({
-      name,
+      title: item.title,
+      date: item.date,
+      subject: item.subject,
+      type: item.type,
     });
 
     return record.save();
@@ -28,6 +31,10 @@ class ScheduleItensRepository {
     });
 
     return record.save();
+  }
+
+  delete(id) {
+    return this._model.deleteOne({ _id: id });
   }
 }
 
