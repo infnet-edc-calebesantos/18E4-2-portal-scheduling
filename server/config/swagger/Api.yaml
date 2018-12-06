@@ -29,6 +29,7 @@ definitions:
         type: string
       date:
         type: string
+        format: date-time
       subject:
         type: string
       type:
