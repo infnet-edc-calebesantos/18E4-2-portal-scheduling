@@ -1,5 +1,6 @@
 import chai from 'chai';
 import request from 'supertest';
+
 import Server from '../server/config/server';
 import ScheduleItensService from '../server/api/schedule-itens/schedule-itens.service';
 import ScheduleItensController from '../server/api/schedule-itens/schedule-itens.controller';
@@ -15,7 +16,11 @@ describe('ScheduleItens', () => {
     serv => {
       const repo = new ScheduleItensRepositoryMock();
       const service = new ScheduleItensService(repo, loggerMock);
-      const controller = new ScheduleItensController(service);
+      const amqpMock = {
+        sendMessage: () => null,
+      };
+
+      const controller = new ScheduleItensController(service, amqpMock);
 
       scheduleItensRouter(serv, controller);
     },

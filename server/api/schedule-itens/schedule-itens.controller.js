@@ -1,8 +1,7 @@
-import sendMessage from '../amqp/send';
-
 class ScheduleItensController {
-  constructor(service) {
+  constructor(service, amqp) {
     this._service = service;
+    this._amqp = amqp;
   }
 
   all(req, res) {
@@ -28,7 +27,7 @@ class ScheduleItensController {
           .location(`/api/v1/schedule-itens/${r.id}`)
           .json(r);
 
-        sendMessage(JSON.stringify(r));
+        this._amqp.sendMessage(JSON.stringify(r));
       });
   }
 
